@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class `FileInfoReader {
+public class FileInfoReader {
     private List<Course> courses = new ArrayList<>();
     private List<Admin> admins = new ArrayList<>();
     private List<Student> students = new ArrayList<>();
