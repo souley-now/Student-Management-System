@@ -25,8 +25,14 @@ public class Course {
     }
 
     public boolean hasTimeConflict(Course other) {
-        // Implement logic to check for time conflicts
-        return false;
+        if (!this.days.equals(other.days)) {
+            return false; // Different days, no conflict
+        }
+        int thisStart = Integer.parseInt(this.startTime.replace(":", ""));
+        int thisEnd = Integer.parseInt(this.endTime.replace(":", ""));
+        int otherStart = Integer.parseInt(other.startTime.replace(":", ""));
+        int otherEnd = Integer.parseInt(other.endTime.replace(":", ""));
+        return (thisStart < otherEnd && otherStart < thisEnd); // Overlapping time ranges
     }
 
     public boolean addStudent(String studentId) {
