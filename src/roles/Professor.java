@@ -16,6 +16,7 @@ public class Professor extends User {
     }
 
     public List<String> getCoursesTaught() {
-        return new ArrayList<>(coursesTaught);
+        return coursesTaught;
     }
 }
+
