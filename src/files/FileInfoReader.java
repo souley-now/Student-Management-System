@@ -1,7 +1,10 @@
+package files;
+
+import courses.Course;
 import roles.Admin;
 import roles.Professor;
 import roles.Student;
-import courses.Course;
+import roles.User;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,9 +1,12 @@
+package files;
+
 import courses.Course;
 import org.junit.jupiter.api.Test;
 import roles.Admin; 
 import roles.Professor; 
 import roles.Student;
-import files.FileInfoReader;
+import files.FileInfoReader; 
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
