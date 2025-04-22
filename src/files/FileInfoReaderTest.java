@@ -1,9 +1,9 @@
-package files;
 import courses.Course;
 import org.junit.jupiter.api.Test;
-import roles.Admin; // Corrected import
-import roles.Professor; // Corrected import
-import roles.Student; // Corrected import
+import roles.Admin; 
+import roles.Professor; 
+import roles.Student;
+import files.FileInfoReader;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,9 +37,9 @@ public class FileInfoReaderTest {
         FileInfoReader fileInfoReader = new FileInfoReader();
         fileInfoReader.loadAllData();
 
-        Student student = fileInfoReader.getStudentByUsername("student1");
+        Student student = fileInfoReader.getStudentByUsername("testStudent01");
         assertNotNull(student);
-        assertEquals("student1", student.getUsername());
+        assertEquals("testStudent01", student.getUsername());
     }
 
     @Test
@@ -47,9 +47,9 @@ public class FileInfoReaderTest {
         FileInfoReader fileInfoReader = new FileInfoReader();
         fileInfoReader.loadAllData();
 
-        Professor professor = fileInfoReader.getProfessorByUsername("prof1");
+        Professor professor = fileInfoReader.getProfessorByUsername("Greenberg");
         assertNotNull(professor);
-        assertEquals("prof1", professor.getUsername());
+        assertEquals("Greenberg", professor.getUsername());
     }
 
     @Test
@@ -57,8 +57,8 @@ public class FileInfoReaderTest {
         FileInfoReader fileInfoReader = new FileInfoReader();
         fileInfoReader.loadAllData();
 
-        Admin admin = fileInfoReader.getAdminByUsername("admin1");
+        Admin admin = fileInfoReader.getAdminByUsername("admin01");
         assertNotNull(admin);
-        assertEquals("admin1", admin.getUsername());
+        assertEquals("admin01", admin.getUsername());
     }
 }

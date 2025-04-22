@@ -1,5 +1,3 @@
-package files;
-
 import roles.Admin;
 import roles.Professor;
 import roles.Student;
@@ -11,12 +9,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Handles reading and managing data from files for the student management system.
+ */
 public class FileInfoReader {
     private final List<Course> courses = new ArrayList<>();
     private final List<Admin> admins = new ArrayList<>();
     private final List<Student> students = new ArrayList<>();
     private final List<Professor> professors = new ArrayList<>();
 
+    /**
+     * Loads all data from the respective files.
+     */
     public void loadAllData() {
         loadProfessors();
         loadCourses();
@@ -28,7 +32,7 @@ public class FileInfoReader {
         try (BufferedReader br = new BufferedReader(new FileReader("src/courseInfo.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(";");
+                String[] parts = line.split("; ");
                 courses.add(new Course(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5],
                         Integer.parseInt(parts[6])));
             }
@@ -54,7 +58,7 @@ public class FileInfoReader {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split("; ");
-                students.add(new Student(parts[0], parts[1], parts[2], parts[3], parts[4], this)); // Pass 'this' as FileInfoReader instance
+                students.add(new Student(parts[0], parts[1], parts[2], parts[3], parts[4], this)); 
             }
         } catch (IOException e) {
             System.err.println("Error reading studentInfo.txt: " + e.getMessage());
@@ -73,18 +77,38 @@ public class FileInfoReader {
         }
     }
 
+    /**
+     * Gets the list of all courses.
+     *
+     * @return A list of courses.
+     */
     public List<Course> getCourses() {
         return courses;
     }
 
+    /**
+     * Gets the list of all admins.
+     *
+     * @return A list of admins.
+     */
     public List<Admin> getAdmins() {
         return admins;
     }
 
+    /**
+     * Gets the list of all students.
+     *
+     * @return A list of students.
+     */
     public List<Student> getStudents() {
         return students;
     }
 
+    /**
+     * Gets the list of all professors.
+     *
+     * @return A list of professors.
+     */
     public List<Professor> getProfessors() {
         return professors;
     }
@@ -106,12 +130,12 @@ public class FileInfoReader {
             String[] parts = courseDetails.split(", ");
             Course newCourse = new Course(parts[1], parts[0], parts[6], parts[4], parts[2], parts[3], Integer.parseInt(parts[5]));
             if (isValidCourse(newCourse.getCourseCode())) {
-                return false; // Course already exists
+                return false; 
             }
             courses.add(newCourse);
             return true;
         } catch (Exception e) {
-            return false; // Invalid input format
+            return false; 
         }
     }
 
@@ -123,12 +147,12 @@ public class FileInfoReader {
         try {
             String[] parts = professorDetails.split(", ");
             if (professors.stream().anyMatch(prof -> prof.getUsername().equals(parts[1]))) {
-                return false; // Username already exists
+                return false; 
             }
             professors.add(new Professor(parts[0], parts[1], parts[2], ""));
             return true;
         } catch (Exception e) {
-            return false; // Invalid input format
+            return false; 
         }
     }
 
@@ -140,12 +164,12 @@ public class FileInfoReader {
         try {
             String[] parts = studentDetails.split(", ");
             if (students.stream().anyMatch(stu -> stu.getUsername().equals(parts[1]))) {
-                return false; // Username already exists
+                return false; 
             }
-            students.add(new Student(parts[0], parts[1], parts[2], parts[3], parts[4], this)); // Pass 'this' as FileInfoReader instance
+            students.add(new Student(parts[0], parts[1], parts[2], parts[3], parts[4], this)); 
             return true;
         } catch (Exception e) {
-            return false; // Invalid input format
+            return false; 
         }
     }
 
@@ -159,25 +183,37 @@ public class FileInfoReader {
                 return course.getEnrolledStudents();
             }
         }
-        return new ArrayList<>(); // Return empty list if course not found
+        return new ArrayList<>(); 
     }
 
+    /**
+     * Gets a course by its ID.
+     *
+     * @param courseId The ID of the course.
+     * @return The course if found, null otherwise.
+     */
     public Course getCourseById(String courseId) {
         for (Course course : courses) {
             if (course.getCourseCode().equals(courseId)) {
                 return course;
             }
         }
-        return null; // Return null if course not found
+        return null;
     }
 
+    /**
+     * Gets a student by their username.
+     *
+     * @param username The username of the student.
+     * @return The student if found, null otherwise.
+     */
     public Student getStudentByUsername(String username) {
         for (Student student : students) {
             if (student.getUsername().equals(username)) {
                 return student;
             }
         }
-        return null; // Return null if student not found
+        return null;
     }
 
     public Professor getProfessorByUsername(String username) {
@@ -186,7 +222,7 @@ public class FileInfoReader {
                 return professor;
             }
         }
-        return null; // Return null if professor not found
+        return null; 
     }
 
     public Admin getAdminByUsername(String username) {
@@ -195,6 +231,6 @@ public class FileInfoReader {
                 return admin;
             }
         }
-        return null; // Return null if admin not found
+        return null; 
     }
 }

@@ -1,13 +1,13 @@
-import files.FileInfoReader;
+import files.FileInfoReader; 
 import roles.Admin;
 import roles.Professor;
-import roles.Student;
+import roles.Student; 
 import roles.User;
 
 import java.util.Scanner;
 
 public class Controller {
-    private static FileInfoReader fileInfoReader = new FileInfoReader();
+    private static final FileInfoReader fileInfoReader = new FileInfoReader(); // Marked as final
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -27,7 +27,7 @@ public class Controller {
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine(); 
 
             switch (choice) {
                 case 1:
@@ -70,7 +70,7 @@ public class Controller {
                 System.out.print("Enter your choice: ");
 
                 int choice = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
+                scanner.nextLine(); 
 
                 switch (choice) {
                     case 1:
@@ -141,7 +141,7 @@ public class Controller {
                 System.out.print("Enter your choice: ");
 
                 int choice = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
+                scanner.nextLine(); 
 
                 switch (choice) {
                     case 1:

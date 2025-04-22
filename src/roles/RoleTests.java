@@ -1,11 +1,10 @@
-package roles;
-
 import files.FileInfoReader;
-import org.junit.jupiter.api.Test; // Ensure this import works after adding JUnit to the project
+import org.junit.jupiter.api.Test; 
 
-import static org.junit.jupiter.api.Assertions.*; // Ensure this import works after adding JUnit to the project
+import static org.junit.jupiter.api.Assertions.*; 
 
 import java.util.List;
+import roles.Professor; // Ensure the correct package path for Professor
 
 public class RoleTests {
 
@@ -16,9 +15,9 @@ public class RoleTests {
         Student student = new Student("1", "John Doe", "student1", "password", "", fileInfoReader);
 
         assertTrue(student.addCourse("CIT591"));
-        assertFalse(student.addCourse("CIT591")); // Already enrolled
+        assertFalse(student.addCourse("CIT591")); 
         assertTrue(student.dropCourse("CIT591"));
-        assertFalse(student.dropCourse("CIT591")); // Already dropped
+        assertFalse(student.dropCourse("CIT591")); 
     }
 
     @Test
